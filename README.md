@@ -1,4 +1,4 @@
-Role Name
+depot_tools
 ========
 
 This role installs [depot_tools](http://www.chromium.org/developers/how-tos/install-depot-tools). [depot_tools](http://www.chromium.org/developers/how-tos/install-depot-tools) is a package of scripts to manage checkouts and code reviews for Chromium and Chromium OS.

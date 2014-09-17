@@ -1,2 +1,9 @@
 ---
-# tasks file for depot_tools
+- name: Installing depot_tools dependencies 
+  apt: name={{ item }} state=present
+  with_items: git 
+
+- name: Checkout depot_tools
+  git: repo={{depot_tools_repo}}
+       dest={{depot_tools_bin_dir}}
+       version={{depot_tools_version}}
