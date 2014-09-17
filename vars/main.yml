@@ -1,5 +1,5 @@
 ---
 # vars file for depot_tools
-depot_tools_repo: git://github.com/jgrowl/ansible-galaxy-depot_tools
+depot_tools_repo: git://chromium.googlesource.com/chromium/tools/depot_tools.git
 depot_tools_bin_dir: /usr/local/bin
 depot_tools_version: master
