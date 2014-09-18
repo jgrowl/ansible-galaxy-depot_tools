@@ -5,5 +5,8 @@
 
 - name: Checkout depot_tools
   git: repo={{depot_tools_repo}}
-       dest={{depot_tools_bin_dir}}
+       dest={{depot_tools_dir}}
        version={{depot_tools_version}}
+
+- name: Add depot_tools to PATH 
+  template: src=depot_tools.sh.j2 dest=/etc/profile.d/depot_tools.sh owner=root group=root mode=0644
