@@ -9,4 +9,4 @@
        version={{depot_tools_version}}
 
 - name: Add depot_tools to PATH 
-  template: src=depot_tools.sh.j2 dest=/etc/profile.d/depot_tools.sh owner=root group=root mode=0644
+  template: src=depot_tools.sh.j2 dest=/etc/profile.d/depot_tools.sh owner=root group=root mode=0655
