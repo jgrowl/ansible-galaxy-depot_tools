@@ -12,7 +12,7 @@
 #- name: Add depot_tools to PATH
 #  template: src=depot_tools.sh.j2 dest=/etc/profile.d/depot_tools.sh owner=root group=root mode=0655
 
-- shell: find {{ depot_tools_dir }} -maxdepth 1 -perm -111 -type f -printf "%f\n" | grep -v .bat | grep -v .exe | grep -v .py
+- shell: find {{ depot_tools_dir }} -maxdepth 1 -perm -111 -type f -printf "%f\n" | grep -v .bat | grep -v .exe 
   register: binaries
   ignore_errors: True
 
