@@ -1,12 +1,20 @@
 ---
-- name: Installing depot_tools dependencies 
+- name: Installing depot_tools dependencies
   apt: name={{ item }} state=present
-  with_items: git 
+  with_items: git
 
 - name: Checkout depot_tools
   git: repo={{depot_tools_repo}}
        dest={{depot_tools_dir}}
        version={{depot_tools_version}}
 
-- name: Add depot_tools to PATH 
-  template: src=depot_tools.sh.j2 dest=/etc/profile.d/depot_tools.sh owner=root group=root mode=0655
+## TODO: Add option to add to path instead of symlinking all of the binaries
+#- name: Add depot_tools to PATH
+#  template: src=depot_tools.sh.j2 dest=/etc/profile.d/depot_tools.sh owner=root group=root mode=0655
+
+- shell: find {{ depot_tools_dir }} -maxdepth 1 -perm -111 -type f -printf "%f\n" | grep -v .bat | grep -v .exe | grep -v .py
+  register: binaries
+  ignore_errors: True
+
+- file: src={{ depot_tools_dir }}/{{ item }} dest={{ depot_tools_bin_dir }}/{{ item }} state=link
+  with_items: binaries.stdout_lines
